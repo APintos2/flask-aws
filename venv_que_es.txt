@@ -1,0 +1,7 @@
+venv sirve para crear entornos pero en la carpeta donde estamos trabajando con el terminal,
+para que cuando despleguemos la app online, vaya con el entorno y la versión de python que hemos utilizado.
+
+# Activar entorno (en la carpeta donde lo instalamos):
+venv\Scripts\activate.bat
+
+# Para usar el venv en un Notebook hay que hacer un open folder de solo esa carpeta donde está el venv, si no no lo encuentra.

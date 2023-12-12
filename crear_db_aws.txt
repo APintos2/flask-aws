@@ -1,0 +1,40 @@
+1. Crear usuario y meter la tarjeta. Nos harán un cargo de 1$ para ver que funciona.
+
+2. Buscar "base de datos" en el buscador y crear de tipo RDS. Cuando la creemos, no modificar el database name,
+crear db en config adicional, ponerla pública, establecer usuario y contraseña y si es de tipo Postgre quitar los Insights.
+
+3. Una vez se esté creando, entrar al grupo de seguridad VPC y añadir puertos que queramos abrir. Si queremos todos,
+Abrir --> todo el tráfico, ipv4 --> 0.0.0.0
+
+4. Copiar ruta del host (pto de enlace), puerto, user, password y meterlo en el "churro" de conexión.
+
+5. Eliminar bbdd cuando acabe de usarla.
+
+
+INSTANCIAS:
+
+Es el ordenadorcito dentro del server de Amazon que contiene nuestras bbdd, etc.
+
+Nombre del servicio en AWS: EC2.
+
+1. Crear Instancia.
+
+2. Seleccionar AMI Ubuntu.
+
+3. Grupo de seguridad --> Permitir todo el tráfico (seleccionar todos).
+
+4. Lanzar instancia. Continuar sin par de claves.
+
+
+Tutorial Flask App en instancia de AWS:
+
+https://web.archive.org/web/20200608052030/https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7
+
+(en el articulo si no va el apt-get, es porque después del apt-get hay que poner install)
+
+Una vez creado, para conectar, poner http://{Dirección IPv4 pública}.
+
+Si hacemos un cambio hay que hacer un reload del Gunicorn para que se actualice en la web:
+    $ sudo systemctl restart helloworld
+
+
