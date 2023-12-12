@@ -10,7 +10,7 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
 
-# engine_sqlite = create_engine("sqlite:///mydb.db")
+## engine_sqlite = create_engine("sqlite:///mydb.db")
 
 engine_postgres_aws = create_engine("postgresql://postgres:password@database-1.cfux8oazuteg.eu-west-3.rds.amazonaws.com:5432/postgres")
 
