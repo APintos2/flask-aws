@@ -12,7 +12,9 @@ from matplotlib.figure import Figure
 
 ## engine_sqlite = create_engine("sqlite:///mydb.db")
 
-engine_postgres_aws = create_engine("postgresql://postgres:password@database-1.cfux8oazuteg.eu-west-3.rds.amazonaws.com:5432/postgres")
+# engine_postgres_aws = create_engine("postgresql://postgres:password@database-1.cfux8oazuteg.eu-west-3.rds.amazonaws.com:5432/postgres")
+
+engine_postgres_fl0 = create_engine("postgresql://fl0user:3VlnZAOTD5Ez@ep-rapid-morning-42278967.eu-central-1.aws.neon.fl0.io:5432/database?sslmode=require")
 
 with open("pipe_model.pkl",  "rb") as f:
     loaded_model = pickle.load(f)
@@ -63,7 +65,7 @@ def predict_args():
     })
     
     
-    df.to_sql("predictions", con=engine_postgres_aws, if_exists="append", index=None)
+    df.to_sql("predictions", con=engine_postgres_fl0, if_exists="append", index=None)
     
     return {"results": {"prediction": str(output)}}
     
@@ -91,7 +93,7 @@ def check_logs():
 
             select * from predictions """
             
-    return pd.read_sql(query, con=engine_postgres_aws).to_html()
+    return pd.read_sql(query, con=engine_postgres_fl0).to_html()
 
 @app.route("/fi")
 def fi():
@@ -138,7 +140,7 @@ def predict_form():
         })
         
         
-        df.to_sql("predictions", con=engine_postgres_aws, if_exists="append", index=None)
+        df.to_sql("predictions", con=engine_postgres_fl0, if_exists="append", index=None)
     
         return render_template("form.html", prediction = output)
     
@@ -146,6 +148,6 @@ def predict_form():
     return render_template("form.html", prediction = "N/A")
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, port=8080)
 
 # app.run(debug=True, port=5000)

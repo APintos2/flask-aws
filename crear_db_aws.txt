@@ -1,3 +1,5 @@
+- CREAR DB AWS:
+
 1. Crear usuario y meter la tarjeta. Nos harán un cargo de 1$ para ver que funciona.
 
 2. Buscar "base de datos" en el buscador y crear de tipo RDS. Cuando la creemos, no modificar el database name,
@@ -11,7 +13,7 @@ Abrir --> todo el tráfico, ipv4 --> 0.0.0.0
 5. Eliminar bbdd cuando acabe de usarla.
 
 
-INSTANCIAS:
+- INSTANCIAS AWS (App):
 
 Es el ordenadorcito dentro del server de Amazon que contiene nuestras bbdd, etc.
 
@@ -26,7 +28,7 @@ Nombre del servicio en AWS: EC2.
 4. Lanzar instancia. Continuar sin par de claves.
 
 
-Tutorial Flask App en instancia de AWS:
+- Tutorial Flask App en instancia de AWS:
 
 https://web.archive.org/web/20200608052030/https://medium.com/techfront/step-by-step-visual-guide-on-deploying-a-flask-application-on-aws-ec2-8e3e8b82c4f7
 
@@ -36,5 +38,15 @@ Una vez creado, para conectar, poner http://{Dirección IPv4 pública}.
 
 Si hacemos un cambio hay que hacer un reload del Gunicorn para que se actualice en la web:
     $ sudo systemctl restart helloworld
+
+- Instancia usando repo:
+
+1. Subir repo a GitHub (sin el venv ni los notebooks).
+
+2. Hacer los pasos del tutorial anterior, pero en vez de crear la carpeta helloworld, hacer: $ git clone <url repo>.
+
+3. Crear un venv e instalar los requirements (pip install -r requirements.txt)
+
+4. Seguir las instrucciones del tutorial.
 
 
